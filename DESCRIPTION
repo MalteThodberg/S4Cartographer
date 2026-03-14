@@ -1,0 +1,54 @@
+Package: S4Cartographer
+Type: Package
+Title: Visualize S4 class inheritance across R/Bioconductor packages
+Version: 0.1.0
+Authors@R: c(
+    person("Malte", "Thodberg",
+  email = "maltethodberg@gmail.com",
+  role = c("cre", "aut"),
+  comment = c(ORCID = "0000-0001-6244-3841"))
+  )
+Description: Visualize S4 class inheritance across R/Bioconductor packages by plotting them as a graph, where each node is an S4 class and edges represent inheritance.
+URL: https://github.com/MalteThodberg/S4Cartographer
+BugReports: https://github.com/MalteThodberg/S4Cartographer/issues
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends: 
+    methods
+Imports: 
+    ggraph,
+    tidygraph,
+    igraph,
+    ggplot2,
+    checkmate,
+    ggthemes,
+    rlang
+RoxygenNote: 7.3.3
+Suggests: 
+    BiocSingular,
+    BiocStyle,
+    Biostrings,
+    clusterExperiment,
+    DelayedArray,
+    DESeq2,
+    GenomicAlignments,
+    GenomicFeatures,
+    GenomicFiles,
+    GenomicRanges,
+    HDF5Array,
+    InteractionSet,
+    IRanges,
+    knitr,
+    MultiAssayExperiment,
+    ResidualMatrix,
+    rmarkdown,
+    S4Vectors,
+    ScaledMatrix,
+    SingleCellExperiment,
+    SpatialExperiment,
+    SummarizedExperiment,
+    TileDBArray,
+    VCFArray,
+    XVector
+VignetteBuilder: knitr
+biocViews: Software,Visualization,GraphAndNetwork
