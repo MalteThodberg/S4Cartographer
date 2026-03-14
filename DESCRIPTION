@@ -22,7 +22,8 @@ Imports:
     ggplot2,
     checkmate,
     ggthemes,
-    rlang
+    rlang,
+    BiocBaseUtils
 RoxygenNote: 7.3.3
 Suggests: 
     BiocSingular,

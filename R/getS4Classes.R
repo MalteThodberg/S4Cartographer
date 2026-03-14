@@ -41,7 +41,11 @@
 #' # Multiple packages
 #' getS4Classes(c("IRanges", "GenomicRanges"))
 getS4Classes <- function(packages){
-    checkmate::assertCharacter(packages, any.missing = FALSE)
+    checkmate::assertCharacter(packages,
+                               any.missing = FALSE,
+                               min.len = 1,
+                               unique = TRUE)
+    BiocBaseUtils::checkInstalled(packages)
 
     # Get classes
     o <- lapply(packages, .s4classes)

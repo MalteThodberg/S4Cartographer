@@ -39,9 +39,14 @@
 #' getS4Inheritance(S4Classes = two_packages$S4Class,
 #'                   packages = two_packages$Package)
 getS4Inheritance <- function(S4Classes, packages){
-    checkmate::assertCharacter(S4Classes, any.missing = FALSE)
-    checkmate::assertCharacter(packages, any.missing = FALSE,
-                               len=length(S4Classes))
+    checkmate::assertCharacter(S4Classes,
+                               any.missing = FALSE,
+                               min.len = 1,
+                               unique = FALSE)
+    checkmate::assertCharacter(packages,
+                               any.missing = FALSE,
+                               len=length(S4Classes),
+                               unique = FALSE)
 
     # Extract edges
     o <- mapply(FUN=.directinheritance, S4Classes, packages, SIMPLIFY = FALSE)

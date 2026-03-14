@@ -20,10 +20,12 @@
 #' # Several packages:
 #' plotS4ClassGraph(c("IRanges", "GenomicRanges"))
 plotS4ClassGraph <- function(packages, plot=TRUE){
-    checkmate::assertCharacter(packages, any.missing = FALSE,
+    checkmate::assertCharacter(packages,
+                               any.missing = FALSE,
                                min.len = 1,
                                unique = TRUE)
     checkmate::assertFlag(plot)
+    BiocBaseUtils::checkInstalled(packages)
 
     # Classes as nodes
     s4_nodes <- getS4Classes(packages)
