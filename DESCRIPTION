@@ -1,7 +1,7 @@
 Package: S4Cartographer
 Type: Package
 Title: Visualize S4 class inheritance across R/Bioconductor packages
-Version: 0.1.0
+Version: 0.99.1
 Authors@R: c(
     person("Malte", "Thodberg",
   email = "maltethodberg@gmail.com",

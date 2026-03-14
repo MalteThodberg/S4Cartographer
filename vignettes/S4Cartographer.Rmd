@@ -21,13 +21,13 @@ knitr::opts_chunk$set(
 
 Bioconductor is famous for hosting excellent bioinformatics software, but if you look under the hood, you'll find it relies heavily on a specific R framework called the S4 system.
 
-S4 is used because it has strict rules that ensure complex biological data is formatted correctly, helping to prevent silent errors in your analysis. However, for a biologist transitioning into R development, S4 comes with a notoriously steep learning curve. Compared to the flexibility of standard R data frames or lists, S4 can feel confusing and overly rigid.
+S4 is used because it has strict rules that ensure complex biological data is formatted correctly, helping to prevent silent errors in your analysis. However, for a biologist transitioning into R development, S4 comes with a notoriously steep learning curve. Compared to the flexibility of standard R `data.frame`s or `list`s, S4 can feel confusing and overly rigid.
 
-A major goal of Bioconductor is making sure different packages can easily share data. Because of this, the official guidelines strongly recommend reusing existing data structures (called "classes")—like SummarizedExperiment or GRanges—rather than inventing your own.
+A major goal of Bioconductor is making sure different packages can easily share data. Because of this, the official guidelines strongly recommend reusing existing data structures (called "classes"), like `SummarizedExperiment` or `GRanges`, rather than inventing your own.
 
 But there is a practical catch: it is incredibly hard to figure out how these classes are related. S4 classes often build on top of several other "parent" classes, creating a deeply tangled family tree. When you try to use standard R functions to figure out what a class inherits from, you are usually hit with a dense, confusing wall of text in your console. This leaves you manually reading through lines of text just to understand how the data is structured.
 
-S4Cartographer is designed to solve this exact problem. It bridges the gap between Bioconductor's recommendation to reuse existing classes and the reality of how hard they are to navigate. By providing intuitive tools, this package helps you easily untangle and understand S4 family trees, so you can focus on the biology instead of the programming syntax.
+`S4Cartographer` is designed to solve this exact problem. It bridges the gap between Bioconductor's recommendation to reuse existing classes and the reality of how hard they are to navigate. By providing intuitive tools, this package helps you easily untangle and understand S4 family trees, so you can focus on the biology instead of the programming syntax.
 
 ```{r setup}
 library(S4Cartographer)
@@ -37,23 +37,23 @@ library(S4Cartographer)
 
 ## Plotting the "core" Bioconductor S4 classes
 
-Let's start by exploring S4Vectors, the most basic package in Bioconductor which defines several fundamental S4-classes that are used across hundreds of Bioconductor packages:
+Let's start by exploring `S4Vectors`, the most basic package in Bioconductor which defines several fundamental S4-classes that are used across hundreds of Bioconductor packages:
 
 ```{r fig.wide = TRUE}
 plotS4ClassGraph("S4Vectors")
 ```
 
-Here we see how the key classes of Rle, Pairs, Hits and Factor all inherit from the same virtual Vector and Annotated classes. A separate branch is formed by various types of List, that all inherit from the same List virtual class.
+Here we see how the key classes of `Rle`, `Pairs`, `Hits` and `Factor` all inherit from the same virtual `Vector` and `Annotated` classes. A separate branch is formed by various types of `List`, that all inherit from the same `List` virtual class.
 
-Let's now look further and added classes defined in IRanges and GRanges, which build directly on top of eachother
+Let's now look further and added classes defined in `IRanges` and `GRanges`, which build directly on top of each other:
 
 ```{r fig.wide = TRUE}
 plotS4ClassGraph(c("S4Vectors", "IRanges", "GenomicRanges"))
 ```
 
-Now the graph has grown substantially! IRanges defines a large number of specialized subclasses from the building blocks in S4Vectors. We can also see how GenomicRanges S4 classes depends on IRanges first and then S4Vectors.
+Now the graph has grown substantially! `IRanges` defines a large number of specialized sub-classes from the building blocks in `S4Vectors`. We can also see how `GenomicRanges` S4 classes depends on `IRanges` first and then `S4Vectors`.
 
-Now let's go wild an plot the entirety of "core" Bioconductor packages!
+Now let's go wild and plot the entirety of "core" Bioconductor packages:
 
 ```{r fig.wide = TRUE}
 plotS4ClassGraph(c("S4Vectors", "IRanges", "GenomicRanges", 
@@ -63,16 +63,18 @@ plotS4ClassGraph(c("S4Vectors", "IRanges", "GenomicRanges",
 
 This of course generates a massive graph too large to fit in a vignette, but try it out if you have access to a very large monitor!
 
-## Plotting the DelayedArray subgraph
+## Plotting the `DelayedArray` sub-graph
 
-DelayedArray is a powerfull framework for working with large-than-memory data. The package forms the core of network of dependent packages, each implementing their own specialized subclasses:
+`DelayedArray` is a powerful framework for working with larger-than-memory data. The package forms the core of a network of dependent packages, each implementing their own specialized sub-classes:
 
 ```{r fig.wide = TRUE}
 plotS4ClassGraph(c("DelayedArray", "HDF5Array", "TileDBArray", "VCFArray", 
                    "ScaledMatrix", "ResidualMatrix", "BiocSingular"))
 ```
 
-## Plotting the SummarizedExperiment subnetwork
+## Plotting the `SummarizedExperiment` sub-graph
+
+`SummarizedExperiment` is a another popular package for organizing various types of expression matrices. It has a large number of that builds upon this functionality:
 
 ```{r fig.wide = TRUE}
 plotS4ClassGraph(c("SummarizedExperiment", "SingleCellExperiment", 
@@ -88,7 +90,7 @@ If you want to inspect the underlying data for the graphs, you can make the func
 plotS4ClassGraph(c("SummarizedExperiment", "SingleCellExperiment"), plot=FALSE)
 ```
 
-Or use the internal helpers, see `?getS4Classes` and `?getS4Inheritance`
+Or use the internal helpers, see `?getS4Classes` and `?getS4Inheritance`.
 
 ## Sessioninfo
 
