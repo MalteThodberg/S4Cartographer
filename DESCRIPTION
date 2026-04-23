@@ -1,14 +1,20 @@
 Package: S4Cartographer
 Type: Package
 Title: Visualize S4 class inheritance across R/Bioconductor packages
-Version: 0.99.2
+Version: 0.99.3
 Authors@R: c(
     person("Malte", "Thodberg",
   email = "maltethodberg@gmail.com",
   role = c("cre", "aut"),
   comment = c(ORCID = "0000-0001-6244-3841"))
   )
-Description: Visualize S4 class inheritance across R/Bioconductor packages by plotting them as a graph, where each node is an S4 class and edges represent inheritance.
+Description: S4 Object-Oriented Programming is fundamental to the Bioconductor 
+    ecosystem, enabling modularity and code reuse across hundreds of packages. 
+    However, the multi-layered inheritance structures within and between 
+    packages can be difficult to navigate. S4Cartographer facilitates the 
+    exploration of these relationships by visualizing S4 class hierarchies as 
+    directed graphs. By representing classes as nodes and inheritance as edges, 
+    it provides a clear overview of complex dependency networks.
 URL: https://github.com/MalteThodberg/S4Cartographer
 BugReports: https://github.com/MalteThodberg/S4Cartographer/issues
 License: GPL (>= 3)
@@ -23,7 +29,8 @@ Imports:
     checkmate,
     ggthemes,
     rlang,
-    BiocBaseUtils
+    BiocBaseUtils,
+    utils
 RoxygenNote: 7.3.3
 Suggests: 
     BiocSingular,

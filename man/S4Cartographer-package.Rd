@@ -6,7 +6,7 @@
 \alias{S4Cartographer-package}
 \title{S4Cartographer: Visualize S4 class inheritance across R/Bioconductor packages}
 \description{
-Visualize S4 class inheritance across R/Bioconductor packages by plotting them as a graph, where each node is an S4 class and edges represent inheritance.
+S4 Object-Oriented Programming is fundamental to the Bioconductor ecosystem, enabling modularity and code reuse across hundreds of packages. However, the multi-layered inheritance structures within and between packages can be difficult to navigate. S4Cartographer facilitates the exploration of these relationships by visualizing S4 class hierarchies as directed graphs. By representing classes as nodes and inheritance as edges, it provides a clear overview of complex dependency networks.
 }
 \seealso{
 Useful links:
